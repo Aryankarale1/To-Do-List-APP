@@ -1,19 +1,27 @@
 const inputBox = document.getElementById("input-box");
 const list = document.getElementById("list-container");
+const emojiPicker = document.getElementById("emoji-picker");
 
 function Addtask() {
-    if (inputBox.value === ''){
-        alert("you must write something")
+
+    const taskText = inputBox.value.trim();
+
+    if (taskText === '') {
+        alert("You must write something!");
+        return;
     }
-    else {
-        let li = document.createElement("li");
-        li.innerHTML= inputBox.value;
-        list.appendChild(li);
-        let span = document.createElement("span");
-        span.innerHTML = "\u00d7";
-        li.appendChild(span);
-    }
+
+    let li = document.createElement("li");
+    li.textContent = `${emojiPicker.value} ${taskText}`;
+
+    let span = document.createElement("span");
+    span.textContent = "\u00d7";
+
+    li.appendChild(span);
+    list.appendChild(li);
+
     inputBox.value = "";
+
     saveData();
 }
 
